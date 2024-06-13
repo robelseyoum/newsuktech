@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     alias(libs.plugins.com.android.application)
     alias(libs.plugins.org.jetbrains.kotlin.android)
@@ -106,6 +108,7 @@ dependencies {
     implementation(libs.compose.activity)
     implementation(libs.compose.viewModel)
     implementation(libs.compose.swipeToRefresh)
+    implementation(libs.androidx.ui.navigation)
 
     //Coil
     implementation(libs.coil)
@@ -139,6 +142,8 @@ dependencies {
     //Hilt
     implementation(libs.hilt.implementation)
     kapt(libs.hilt.android.compiler)
+    implementation(libs.androidx.hilt.navigation)
+    kapt(libs.androidx.hilt.compiler)
 
     // Splash screen Api
     implementation(libs.splashScreenApi)
@@ -155,4 +160,9 @@ dependencies {
 
     //Lottie Animations
     implementation(libs.lottieAnimations)
+
+    // Room
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    kapt(libs.room.compiler)
 }
