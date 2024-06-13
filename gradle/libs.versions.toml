@@ -97,6 +97,7 @@ ktlint = "org.jlleitschuh.gradle.ktlint:11.0.0"
 allopen = "org.jetbrains.kotlin.plugin.allopen:1.9.22"
 navigation-safeargs = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navigation" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize",  version.ref = "kotlinPlugin"  }
+androidLibrary = { id = "com.android.library", version.ref = "com-android-application" }
 
 [bundles]
 
