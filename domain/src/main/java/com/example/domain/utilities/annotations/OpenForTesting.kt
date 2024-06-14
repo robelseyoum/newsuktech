@@ -1,4 +1,4 @@
-package com.example.newsuktech.utilities.annotations
+package com.example.domain.utilities.annotations
 
 @Target(AnnotationTarget.CLASS)
 annotation class OpenForTesting

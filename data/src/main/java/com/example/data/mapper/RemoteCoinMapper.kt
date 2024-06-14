@@ -16,7 +16,6 @@ fun CoinResponse.mapToDomain() =
     )
 
 
-
 private fun CoinResponse.mapToCoinTag() =
     (tags ?: emptyList())
         .map {

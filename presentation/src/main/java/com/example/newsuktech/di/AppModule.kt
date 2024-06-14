@@ -4,8 +4,15 @@ import android.app.Application
 import com.example.data.api.Api
 import com.example.data.api.ApiResponseHandler
 import com.example.data.utilities.Constants.Companion.COIN_PAPRIKA_BASE_URL
+import com.example.domain.interactors.coindetailusecase.GetCoinDetailUsecase
+import com.example.domain.interactors.coindetailusecase.GetCoinDetailUsecaseImp
+import com.example.domain.interactors.coinsusecase.GetCoinsUseCaseImp
+import com.example.domain.interactors.coinsusecase.GetCoinsUsecase
+import com.example.domain.repository.CoinDetailRepository
+import com.example.domain.repository.CoinsListRepository
 import com.example.newsuktech.App
 import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,10 +30,20 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 @Module
 class AppModule {
+    @Provides
+    @Singleton
+    fun provideGson(): Gson {
+        return GsonBuilder()
+            .setLenient()
+            .serializeNulls()
+            .create()
+    }
 
     @Singleton
     @Provides
-    fun provideApi(gson: Gson): Api {
+    fun provideApi(
+        gson: Gson
+    ): Api {
         val baseUrl = COIN_PAPRIKA_BASE_URL
         val client = getOkHttpClient()
 
@@ -79,4 +96,19 @@ class AppModule {
     }
     //endregion handlers
 
+    @Provides
+    @Singleton
+    fun provideGetCoinsUsecase(
+        repository: CoinsListRepository
+    ): GetCoinsUsecase {
+        return GetCoinsUseCaseImp(repository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideGetCoinDetailRepository(
+        repository: CoinDetailRepository
+    ): GetCoinDetailUsecase {
+        return GetCoinDetailUsecaseImp(repository)
+    }
 }
