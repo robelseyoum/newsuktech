@@ -42,6 +42,8 @@ mockk = "1.13.7"
 kotlinPlugin = "1.9.0"
 room_version = "2.6.1"
 animationGraphicsAndroid = "1.6.7"
+pluginSerializationVersion = "2.0.0"
+jetBrain_kotlinx = "1.6.3"
 
 [libraries]
 coil = { module = "io.coil-kt:coil", version.ref = "coil" }
@@ -100,6 +102,7 @@ androidx-hilt-navigation = { group = "androidx.hilt", name = "hilt-navigation-co
 room-runtime = { module = "androidx.room:room-runtime", version.ref = "room_version" }
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "room_version" }
 room-ktx = { module = "androidx.room:room-ktx", version.ref = "room_version" }
+jetBrainKotlinx= { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "jetBrain_kotlinx" }
 
 [plugins]
 com-android-application = { id = "com.android.application", version.ref = "com-android-application" }
@@ -110,6 +113,7 @@ allopen = "org.jetbrains.kotlin.plugin.allopen:1.9.22"
 navigation-safeargs = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navigation" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize",  version.ref = "kotlinPlugin"  }
 androidLibrary = { id = "com.android.library", version.ref = "com-android-application" }
+pluginSerialization = { id = "plugin.serialization", version.ref = "pluginSerializationVersion" }
 
 [bundles]
 

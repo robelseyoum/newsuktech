@@ -2,10 +2,6 @@ package com.example.data.api.response
 
 import com.google.gson.annotations.SerializedName
 
-data class RemoteCoinsResponse (
-    val status: List<CoinResponse>
-)
-
 data class CoinResponse(
     @SerializedName("id")
     val id: String,
