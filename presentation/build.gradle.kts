@@ -141,9 +141,9 @@ dependencies {
 
     //Hilt
     implementation(libs.hilt.implementation)
-    kapt(libs.hilt.android.compiler)
     implementation(libs.androidx.hilt.navigation)
     kapt(libs.androidx.hilt.compiler)
+    kapt(libs.hilt.android.compiler)
 
     // Splash screen Api
     implementation(libs.splashScreenApi)
