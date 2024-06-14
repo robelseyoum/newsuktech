@@ -19,7 +19,7 @@ coroutines = "1.6.4"
 gsonVersion = "2.9.1"
 leakCanary = "2.9.1"
 splashScren = "1.0.0-beta02"
-hilt = "2.44"
+hilt = "2.50"
 androidx_hilt = "1.2.0"
 retrofit = "2.9.0"
 loggingInterceptor = "4.10.0"
@@ -96,9 +96,6 @@ androidx-ui-navigation = { module = "androidx.navigation:navigation-compose", ve
 
 androidx-hilt-compiler = { group = "androidx.hilt", name = "hilt-compiler", version.ref = "androidx_hilt" }
 androidx-hilt-navigation = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "androidx_hilt" }
-
-#androidx-hilt-compiler = "androidx.hilt:hilt-compiler:1.2.0"
-#androidx-hilt-navigation = "androidx.hilt:hilt-navigation-compose:1.2.0"
 
 room-runtime = { module = "androidx.room:room-runtime", version.ref = "room_version" }
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "room_version" }
