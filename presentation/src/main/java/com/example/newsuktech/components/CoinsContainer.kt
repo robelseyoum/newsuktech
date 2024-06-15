@@ -46,41 +46,41 @@ fun CoinsContainer(
                 .fillMaxWidth()
                 .height(dimensionResource(R.dimen.spacing_68))
         ) {
-            Column(
-                modifier = Modifier
-                    .padding(
-                        top = dimensionResource(R.dimen.spacing_15),
-                        bottom = dimensionResource(R.dimen.spacing_15)
-                    )
-                    .weight(weight = 8f)
-            ) {
-                //Coin Name Title
-                Text(
-                    text = "Coin Name",
-                    style = com.example.newsuktech.ui.theme.Typography.SmallTitle,
-                    color = NewsUkTechTheme.colors.Titles,
-                    textAlign = TextAlign.Left,
+            coinDataState.coinsData?.let {
+                Column(
                     modifier = Modifier
-                        .padding(bottom = dimensionResource(R.dimen.spacing_1))
-                        .semantics { contentDescription = "" }
-                )
+                        .padding(
+                            top = dimensionResource(R.dimen.spacing_15),
+                            bottom = dimensionResource(R.dimen.spacing_15)
+                        )
+                        .weight(weight = 8f)
+                ) {
+                    //Coin Name Title
+                    Text(
+                        text = "Coin Name",
+                        style = com.example.newsuktech.ui.theme.Typography.SmallTitle,
+                        color = NewsUkTechTheme.colors.Titles,
+                        textAlign = TextAlign.Left,
+                        modifier = Modifier
+                            .padding(bottom = dimensionResource(R.dimen.spacing_1))
+                            .semantics { contentDescription = "" }
+                    )
 
-                //Coin type Title
-                androidx.compose.material.Text(
-                    text = "Coin Type",
-                    style = com.example.newsuktech.ui.theme.Typography.MU3PowerUpBodyText,
-                    color = NewsUkTechTheme.colors.Titles,
-                    textAlign = TextAlign.Left,
-                    modifier = Modifier.semantics {
-                        contentDescription = ""
-                    }
-                )
-            }
-            Column(
-                modifier = Modifier.padding(end = dimensionResource(R.dimen.spacing_9)),
-                verticalArrangement = Arrangement.Center
-            ) {
-                coinDataState.coinsData?.let {
+                    //Coin type Title
+                    androidx.compose.material.Text(
+                        text = "Coin Type",
+                        style = com.example.newsuktech.ui.theme.Typography.MU3PowerUpBodyText,
+                        color = NewsUkTechTheme.colors.Titles,
+                        textAlign = TextAlign.Left,
+                        modifier = Modifier.semantics {
+                            contentDescription = ""
+                        }
+                    )
+                }
+                Column(
+                    modifier = Modifier.padding(end = dimensionResource(R.dimen.spacing_9)),
+                    verticalArrangement = Arrangement.Center
+                ) {
                     //Coin Name  value
                     Text(
                         text = it.name,

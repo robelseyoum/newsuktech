@@ -57,8 +57,9 @@ class CoinListViewModel @Inject constructor(
     }
 
     private fun updateCoinsDataState(coinDataList: List<CoinData>) {
+        val filteredActiveCoins = coinDataList.filter { it.isActive }.take(200)
         coinDataState.clear()
-        coinDataState.addAll(mapToCollection(coinDataList.take(200)))
+        coinDataState.addAll(mapToCollection(filteredActiveCoins))
 
     }
 
