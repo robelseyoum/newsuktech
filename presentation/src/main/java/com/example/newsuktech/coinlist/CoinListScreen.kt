@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -23,10 +22,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.domain.model.CoinDataState
-import com.example.domain.model.LoadingState
 import com.example.newsuktech.R
 import com.example.newsuktech.components.CoinsContainer
 import com.example.newsuktech.components.CustomToolbar
+import com.example.newsuktech.components.ErrorMessageComponent
 import com.example.newsuktech.components.LoadingContainer
 import com.example.newsuktech.ui.theme.NewsUkTechTheme
 import com.google.accompanist.swiperefresh.SwipeRefresh
@@ -38,35 +37,42 @@ fun CoinListScreen(
     onCoinsDataTapped: (coinId: String) -> Unit,
     viewModel: CoinListViewModel = hiltViewModel()
 ) {
-
-    val isLoadingState = remember { mutableStateOf(false) }
     val isSwipeRefreshing = remember { mutableStateOf(false) }
     val stateSwipeToRefresh = rememberSwipeRefreshState(isSwipeRefreshing.value)
     val listState = rememberLazyListState()
 
-    isLoadingState.value = viewModel.isLoadingState == LoadingState.LOADING
-
     SwipeRefresh(
         state = stateSwipeToRefresh,
-        onRefresh = { viewModel.onSwipeRefreshCoins() }
+        modifier = Modifier.fillMaxSize(),
+        onRefresh = {
+            viewModel.onSwipeRefreshCoins()
+        },
     ) {
         Scaffold(
             modifier = Modifier
                 .fillMaxSize()
                 .background(color = Color.White),
             snackbarHost = { /* NO-OP */ },
-            containerColor = MaterialTheme.colorScheme.background,
+            containerColor = NewsUkTechTheme.colors.Background,
             content = { innerPadding ->
                 LoadingContainer(
-                    isLoading = isLoadingState.value,
                     modifier = Modifier.padding(innerPadding),
-                ) {
-                    BuildContent(
-                        listState = listState,
-                        coinDataState = viewModel.coinDataState,
-                        onCoinsDataTapped = onCoinsDataTapped
-                    )
-                }
+                    state = viewModel.isLoadingState,
+                    errorStateComponent = {
+                        BuildTopBar(
+                            onBackButtonClick = { viewModel.onSwipeRefreshCoins() },
+                            showBackButton = true
+                        )
+                        ErrorMessageComponent()
+                    },
+                    readyStateComponent = {
+                        BuildContent(
+                            listState = listState,
+                            coinDataState = viewModel.coinDataState,
+                            onCoinsDataTapped = onCoinsDataTapped
+                        )
+                    }
+                )
             }
         )
     }
@@ -79,7 +85,6 @@ private fun BuildContent(
     coinDataState: MutableList<CoinDataState>?,
     onCoinsDataTapped: (id: String) -> Unit,
 ) {
-
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -133,8 +138,13 @@ fun BuildCoinsList(
 }
 
 @Composable
-private fun BuildTopBar() {
+private fun BuildTopBar(
+    onBackButtonClick: () -> Unit = {},
+    showBackButton: Boolean = false,
+) {
     CustomToolbar(
+        showBackButton = showBackButton,
+        onBackButtonClick = onBackButtonClick,
         title = stringResource(id = R.string.news_uk_challenge_main_title)
     )
 }

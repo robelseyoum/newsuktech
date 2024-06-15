@@ -5,7 +5,8 @@ import kotlinx.coroutines.Dispatchers
 
 class Constants {
     companion object {
-        val requestDispatchers: CoroutineDispatcher = Dispatchers.IO
+        val requestIODispatchers: CoroutineDispatcher = Dispatchers.IO
+        val requestMainDispatchers: CoroutineDispatcher = Dispatchers.Main
         const val COIN_PAPRIKA_BASE_URL = "https://api.coinpaprika.com"
         const val COINS_PAPRIKA_LIST = "/v1/coins"
         const val COIN_PAPRIKA_DETAIL_ID = "/v1/coins/{id}"

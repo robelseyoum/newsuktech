@@ -6,7 +6,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.data.utilities.Constants.Companion.requestDispatchers
+import com.example.data.utilities.Constants.Companion.requestIODispatchers
+import com.example.data.utilities.Constants.Companion.requestMainDispatchers
 import com.example.domain.interactors.coinsusecase.GetCoinsUsecase
 import com.example.domain.model.CoinData
 import com.example.domain.model.CoinDataState
@@ -25,7 +26,6 @@ class CoinListViewModel @Inject constructor(
     private val getCoinsUsecase: GetCoinsUsecase
 ) : ViewModel() {
 
-    private val lock = Any()
     private var loadJob: Job? = null
 
     var isLoadingState by mutableStateOf(LoadingState.NONE)
@@ -44,7 +44,7 @@ class CoinListViewModel @Inject constructor(
     private fun fetchCoins() {
         updateLoadingState(LoadingState.LOADING)
         loadJob?.cancel()
-        loadJob = viewModelScope.launch(requestDispatchers) {
+        loadJob = viewModelScope.launch(requestIODispatchers) {
             getCoinsUsecase.invoke().catch {
                 updateLoadingState(LoadingState.ERROR)
             }.collectLatest { result ->
@@ -67,7 +67,7 @@ class CoinListViewModel @Inject constructor(
     }
 
     private fun updateLoadingState(loadingState: LoadingState) {
-        synchronized(lock) {
+        viewModelScope.launch(requestMainDispatchers) {
             isLoadingState = loadingState
         }
     }

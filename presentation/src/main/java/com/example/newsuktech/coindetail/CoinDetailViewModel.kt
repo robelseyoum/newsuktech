@@ -23,13 +23,12 @@ class CoinDetailViewModel @Inject constructor(
     private val getCoinDetailUsecase: GetCoinDetailUsecase
 ) : ViewModel() {
 
-    private val lock = Any()
     private var loadJob: Job? = null
 
     var isLoadingState by mutableStateOf(LoadingState.NONE)
         private set
 
-    final var coinDataState by mutableStateOf(CoinDataState())
+    var coinDataState by mutableStateOf(CoinDataState())
         private set
 
 
@@ -40,7 +39,7 @@ class CoinDetailViewModel @Inject constructor(
     private fun fetchCoinDetail(id: String) {
         updateLoadingState(LoadingState.LOADING)
         loadJob?.cancel()
-        loadJob = viewModelScope.launch(Constants.requestDispatchers) {
+        loadJob = viewModelScope.launch(Constants.requestIODispatchers) {
             getCoinDetailUsecase.invoke(id).catch {
                 updateLoadingState(LoadingState.ERROR)
             }.collectLatest { result ->
@@ -59,7 +58,7 @@ class CoinDetailViewModel @Inject constructor(
     }
 
     private fun updateLoadingState(loadingState: LoadingState) {
-        synchronized(lock) {
+        viewModelScope.launch(Constants.requestMainDispatchers) {
             isLoadingState = loadingState
         }
     }
