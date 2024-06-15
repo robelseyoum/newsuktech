@@ -1,7 +1,7 @@
 package com.example.data.api
 
 import com.example.data.utilities.Constants.Companion.EMPTY_RESPONSE_ERROR
-import com.example.data.utilities.Constants.Companion.requestDispatchers
+import com.example.data.utilities.Constants.Companion.requestIODispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
@@ -35,7 +35,7 @@ class ApiResponseHandler<T> {
                 }
                 throw exception
             }
-        }.flowOn(requestDispatchers)
+        }.flowOn(requestIODispatchers)
     }
 
     fun asException(response: Response<*>): CoinsException {

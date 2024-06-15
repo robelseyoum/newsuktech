@@ -14,7 +14,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.example.newsuktech.ui.theme.NewsUkTechTheme
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.contentDescription
@@ -23,6 +22,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import com.example.domain.model.CoinDataState
 import com.example.newsuktech.R
+import com.example.newsuktech.ui.theme.NewsUkTechTheme
 
 @Composable
 fun CoinsContainer(

@@ -11,29 +11,26 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import com.example.domain.model.LoadingState
 
 @Composable
 fun LoadingContainer(
-    isLoading: Boolean,
+    state: LoadingState,
     modifier: Modifier = Modifier,
-    content: @Composable () -> Unit,
-) {
-    Box(modifier = modifier) {
-        content()
-        if (isLoading) {
+    loadingStateComponent: @Composable () -> Unit = {
+        Box(modifier = modifier) {
             LoadingView()
         }
+    },
+    errorStateComponent: @Composable () -> Unit,
+    readyStateComponent: @Composable () -> Unit,
+) {
+    when (state) {
+        LoadingState.READY -> readyStateComponent()
+        LoadingState.LOADING -> loadingStateComponent()
+        LoadingState.ERROR -> errorStateComponent()
+        else -> { /*NO-OP*/ }
     }
-}
-
-@Composable
-private fun SetTransparentOverlay(modifier: Modifier = Modifier) {
-    Box(
-        contentAlignment = Alignment.Center,
-        modifier = modifier
-            .fillMaxSize()
-            .background(Color.Black.copy(alpha = 0.5F))
-    ) {}
 }
 
 @Composable
