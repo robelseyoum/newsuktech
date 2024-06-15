@@ -5,5 +5,4 @@ import kotlinx.coroutines.flow.Flow
 
 interface GetCoinDetailUsecase {
     suspend operator fun invoke(id: String): Flow<CoinData?>
-
 }

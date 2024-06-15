@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">NewsUK Tech Test</string>
+
+    <string name="news_uk_challenge_main_title">Paprika\'s Coins Info</string>
+    <string name="news_uk_challenge_main_title_detail_title">Coins Info Detail</string>
+    <string name="mu_button_confirm">CONFIRM</string>
+    <string name="mu_button_next">NEXT</string>
+    <string name="mu_button_back">BACK</string>
+    <string name="mu_button_go_back">GO BACK</string>
+    <string name="mu_button_delete">DELETE</string>
+    <string name="mu_button_apply">APPLY</string>
+    <string name="mu_button_cancel">CANCEL</string>
+    <string name="mu_button_ok">OK</string>
+    <string name="mu_button_save">SAVE</string>
+    <string name="mu_button_book_install">BOOK INSTALL</string>
+    <string name="mu_button_no_thanks">NO, THANKS</string>
+    <string name="mu_button_rate_now">RATE NOW</string>
+    <string name="mu_button_withdraw">WITHDRAW</string>
 </resources>

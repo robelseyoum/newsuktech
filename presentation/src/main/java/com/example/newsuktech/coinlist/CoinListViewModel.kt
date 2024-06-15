@@ -37,7 +37,7 @@ class CoinListViewModel @Inject constructor(
         fetchCoins()
     }
 
-    fun onRefreshCoins() {
+    fun onSwipeRefreshCoins() {
         fetchCoins()
     }
 
@@ -58,7 +58,7 @@ class CoinListViewModel @Inject constructor(
 
     private fun updateCoinsDataState(coinDataList: List<CoinData>) {
         coinDataState.clear()
-        coinDataState.addAll(mapToCollection(coinDataList))
+        coinDataState.addAll(mapToCollection(coinDataList.take(200)))
 
     }
 

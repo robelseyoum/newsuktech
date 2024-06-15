@@ -15,8 +15,11 @@ data class CoinResponse(
     @SerializedName("logo")
     val logo: String? = null,
 
-    @SerializedName("tags")
-    val tags: List<CoinTagResponse>? = null,
+    @SerializedName("type")
+    val type: String? = null,
+
+    @SerializedName("is_active")
+    val isActive: Boolean? = null,
 
     @SerializedName("description")
     val description: String? = null
