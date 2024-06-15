@@ -21,6 +21,12 @@ data class CoinResponse(
     @SerializedName("is_active")
     val isActive: Boolean? = null,
 
+    @SerializedName("rank")
+    val rank: Int? = null,
+
+    @SerializedName("platform")
+    val platform: String? = null,
+
     @SerializedName("description")
     val description: String? = null
 )

@@ -90,9 +90,7 @@ private fun BuildContent(
         BuildTopBar()
         Text(
             text = "Paprika Coins",
-            modifier = Modifier.padding(
-                dimensionResource(id = R.dimen.spacing_20)
-            ),
+            modifier = Modifier.padding(dimensionResource(id = R.dimen.spacing_20)),
             color = NewsUkTechTheme.colors.Titles,
             style = com.example.newsuktech.ui.theme.Typography.LargeTitleMessages,
         )
@@ -121,7 +119,7 @@ fun BuildCoinsList(
             state = listState,
             modifier = Modifier
                 .fillMaxSize()
-                .padding(dimensionResource(id = R.dimen.spacing_10))
+                .padding(top = dimensionResource(id = R.dimen.spacing_10))
         ) {
             items(coinsList.size) { index ->
                 CoinsContainer(
@@ -143,7 +141,7 @@ private fun BuildTopBar() {
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+fun BuildCoinsListPreview() {
     NewsUkTechTheme {
         CoinListScreen(
             onCoinsDataTapped = {},

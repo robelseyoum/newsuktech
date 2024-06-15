@@ -8,11 +8,13 @@ fun CoinResponse.mapToDomain() =
     CoinData(
         id = id,
         name = name ?: "",
-        symbol = symbol ?: "",
-        logo = logo ?: "",
         type = type ?: "",
         isActive = isActive ?: false,
-        description = ""
+        symbol = symbol ?: "",
+        logo = logo ?: "",
+        rank = rank ?: -1,
+        platform = platform ?: "",
+        description = description ?: ""
     )
 
 

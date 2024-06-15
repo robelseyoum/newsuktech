@@ -1,5 +1,6 @@
 package com.example.newsuktech.components
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -15,9 +16,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.example.newsuktech.ui.theme.NewsUkTechTheme
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import com.example.domain.model.CoinDataState
 import com.example.newsuktech.R
 
@@ -31,10 +34,6 @@ fun CoinsContainer(
         modifier = Modifier
             .fillMaxHeight()
             .fillMaxWidth()
-            .padding(
-                start = dimensionResource(id = R.dimen.spacing_15),
-                end = dimensionResource(id = R.dimen.spacing_20)
-            )
             .clickable(onClick = {
                 onCoinsDataClicked.invoke(coinDataState.coinsData?.id ?: "")
             })
@@ -44,6 +43,10 @@ fun CoinsContainer(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
                 .fillMaxWidth()
+                .padding(
+                    start = dimensionResource(id = R.dimen.spacing_15),
+                    end = dimensionResource(id = R.dimen.spacing_20)
+                )
                 .height(dimensionResource(R.dimen.spacing_68))
         ) {
             coinDataState.coinsData?.let {
@@ -78,14 +81,15 @@ fun CoinsContainer(
                     )
                 }
                 Column(
-                    modifier = Modifier.padding(end = dimensionResource(R.dimen.spacing_9)),
+                    modifier = Modifier.padding(end = dimensionResource(R.dimen.spacing_15)),
                     verticalArrangement = Arrangement.Center
                 ) {
                     //Coin Name  value
                     Text(
                         text = it.name,
-                        style = com.example.newsuktech.ui.theme.Typography.SmallTitle,
+                        style = com.example.newsuktech.ui.theme.Typography.FAQsQuestions,
                         color = NewsUkTechTheme.colors.Titles,
+                        overflow = TextOverflow.Ellipsis,
                         textAlign = TextAlign.Left,
                         modifier = Modifier
                             .padding(bottom = dimensionResource(R.dimen.spacing_1))
@@ -102,6 +106,11 @@ fun CoinsContainer(
                         }
                     )
                 }
+                //Arrow
+                Image(
+                    painter = painterResource(id = R.drawable.ic_chevron_right),
+                    contentDescription = ""
+                )
             }
         }
     }
