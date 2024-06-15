@@ -29,8 +29,6 @@ class CoinDetailViewModel @Inject constructor(
     var isLoadingState by mutableStateOf(LoadingState.NONE)
         private set
 
-//    var coinDataState = mutableStateOf(CoinDataState())
-
     final var coinDataState by mutableStateOf(CoinDataState())
         private set
 
