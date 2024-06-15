@@ -15,7 +15,6 @@ import com.example.newsuktech.coinlist.CoinListScreen
 fun MainNavigation(
     navController: NavHostController = rememberNavController()
 ) {
-    //todo for coin detail screen navigation
     NavHost(
         navController = navController,
         startDestination = ScreenNav.CoinListScreen.route
@@ -24,7 +23,7 @@ fun MainNavigation(
             route = ScreenNav.CoinListScreen.route
         ) {
             CoinListScreen(
-                onGoToCoinDetails = { id ->
+                onCoinsDataTapped = { id ->
                     navController.navigate(
                         ScreenNav.CoinDetailScreen.route.plus("/$id")
                     )

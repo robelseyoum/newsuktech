@@ -5,6 +5,7 @@ data class CoinData(
     val name: String = "",
     val symbol: String = "",
     val logo: String = "",
-    val tags: List<CoinTagData> = emptyList(),
+    val type: String = "",
+    val isActive: Boolean = false,
     val description: String = ""
 )
