@@ -1,5 +1,11 @@
 package com.example.newsuktech.coinlist
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.expandVertically
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -127,11 +133,17 @@ fun BuildCoinsList(
                 .padding(top = dimensionResource(id = R.dimen.spacing_10))
         ) {
             items(coinsList.size) { index ->
-                CoinsContainer(
-                    coinDataState = coinsList[index],
-                    onCoinsDataClicked = onCoinsDataTapped
-                )
-                Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.spacing_5)))
+                AnimatedVisibility(
+                    visible = true,
+                    enter = fadeIn(animationSpec = tween(durationMillis = 500)) + expandVertically(),
+                    exit = fadeOut(animationSpec = tween(durationMillis = 500)) + shrinkVertically()
+                ) {
+                    CoinsContainer(
+                        coinDataState = coinsList[index],
+                        onCoinsDataClicked = onCoinsDataTapped
+                    )
+                    Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.spacing_5)))
+                }
             }
         }
     }
@@ -154,7 +166,7 @@ private fun BuildTopBar(
 fun BuildCoinsListPreview() {
     NewsUkTechTheme {
         CoinListScreen(
-            onCoinsDataTapped = {},
+            onCoinsDataTapped = {/* NO-OP */ },
             viewModel = hiltViewModel()
         )
     }
