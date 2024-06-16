@@ -10,3 +10,8 @@
 - Coroutine (Kotlin flows)for background UI thread processing data
 - Main Jetpack Components including ViewModel
 
+<p align="center">
+  <img src="After coins_list.jpeg" alt="After Fajar" width="270" height="480"/>
+
+  <img src="During coin_detail.jpeg" alt="During Dhuhr" width="270" height="480"/>
+</p>
