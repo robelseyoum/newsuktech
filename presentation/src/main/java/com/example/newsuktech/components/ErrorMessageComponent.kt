@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import com.example.newsuktech.R
@@ -25,14 +26,14 @@ fun ErrorMessageComponent() {
     ) {
 
         Text(
-            text = "Whoops! something went wrong.",
+            text = stringResource(id = R.string.coins_error_title),
             color = NewsUkTechTheme.colors.Titles,
             style = Typography.LargeTitleMessages,
             textAlign = TextAlign.Center,
         )
 
         Text(
-            text = "Sorry, we can't get coins information",
+            text = stringResource(id = R.string.coins_error_sub_title),
             overflow = TextOverflow.Ellipsis,
             color = NewsUkTechTheme.colors.Titles,
             style = Typography.BlockLinkDescription,

@@ -100,13 +100,13 @@ private fun BuildContent(
     ) {
         BuildTopBar()
         Text(
-            text = "Paprika Coins",
+            text = stringResource(id = R.string.coins_list_main_title_name),
             modifier = Modifier.padding(dimensionResource(id = R.dimen.spacing_20)),
             color = NewsUkTechTheme.colors.Titles,
             style = com.example.newsuktech.ui.theme.Typography.LargeTitleMessages,
         )
         androidx.compose.material.Text(
-            text = "Active".uppercase(),
+            text = stringResource(id = R.string.coins_list_main_title_active).uppercase(),
             modifier = Modifier.padding(start = dimensionResource(id = R.dimen.spacing_20)),
             style = com.example.newsuktech.ui.theme.Typography.CustomSubTitle,
             color = NewsUkTechTheme.colors.CodingChallenge2024Grey

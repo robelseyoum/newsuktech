@@ -89,7 +89,7 @@ private fun BuildTopBar(onBackButtonClick: (() -> Unit)) {
 fun CoinDetailScreenPreview() {
     NewsUkTechTheme {
         CoinDetailScreen(
-            coinId = "",
+            coinId = "id",
             viewModel = hiltViewModel(),
             onBackPressed = {},
         )

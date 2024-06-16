@@ -3,17 +3,17 @@
 
     <string name="news_uk_challenge_main_title">Paprika\'s Coins Info</string>
     <string name="news_uk_challenge_main_title_detail_title">Coins Info Detail</string>
-    <string name="mu_button_confirm">CONFIRM</string>
-    <string name="mu_button_next">NEXT</string>
-    <string name="mu_button_back">BACK</string>
-    <string name="mu_button_go_back">GO BACK</string>
-    <string name="mu_button_delete">DELETE</string>
-    <string name="mu_button_apply">APPLY</string>
-    <string name="mu_button_cancel">CANCEL</string>
-    <string name="mu_button_ok">OK</string>
-    <string name="mu_button_save">SAVE</string>
-    <string name="mu_button_book_install">BOOK INSTALL</string>
-    <string name="mu_button_no_thanks">NO, THANKS</string>
-    <string name="mu_button_rate_now">RATE NOW</string>
-    <string name="mu_button_withdraw">WITHDRAW</string>
+
+    <string name="coins_list_main_title_name">Paprika Coins</string>
+    <string name="coins_list_main_title_active">Active</string>
+
+    <string name="coins_list_title_name">Coin Name</string>
+    <string name="coins_list_title_type">Coin Type</string>
+
+    <string name="coins_detail_title_symbol">Symbol</string>
+    <string name="coins_detail_title_rank">Rank</string>
+
+    <string name="coins_error_title">Whoops! something went wrong.</string>
+    <string name="coins_error_sub_title">Sorry, we can\'t get coins information</string>
+
 </resources>

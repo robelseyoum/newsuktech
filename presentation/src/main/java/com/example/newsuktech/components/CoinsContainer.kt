@@ -16,10 +16,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.semantics.contentDescription
-import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
+import com.example.data.utilities.Constants.Companion.EMPTY
 import com.example.domain.model.CoinDataState
 import com.example.newsuktech.R
 import com.example.newsuktech.ui.theme.NewsUkTechTheme
@@ -35,7 +35,7 @@ fun CoinsContainer(
             .fillMaxHeight()
             .fillMaxWidth()
             .clickable(onClick = {
-                onCoinsDataClicked.invoke(coinDataState.coinsData?.id ?: "")
+                onCoinsDataClicked.invoke(coinDataState.coinsData?.id ?: EMPTY)
             })
     ) {
         Divider(color = NewsUkTechTheme.colors.divider)
@@ -60,24 +60,20 @@ fun CoinsContainer(
                 ) {
                     //Coin Name Title
                     Text(
-                        text = "Coin Name",
+                        text = stringResource(id = R.string.coins_list_title_name),
                         style = com.example.newsuktech.ui.theme.Typography.SmallTitle,
                         color = NewsUkTechTheme.colors.Titles,
                         textAlign = TextAlign.Left,
                         modifier = Modifier
                             .padding(bottom = dimensionResource(R.dimen.spacing_1))
-                            .semantics { contentDescription = "" }
                     )
 
                     //Coin type Title
                     androidx.compose.material.Text(
-                        text = "Coin Type",
+                        text = stringResource(id = R.string.coins_list_title_type),
                         style = com.example.newsuktech.ui.theme.Typography.MU3PowerUpBodyText,
                         color = NewsUkTechTheme.colors.Titles,
                         textAlign = TextAlign.Left,
-                        modifier = Modifier.semantics {
-                            contentDescription = ""
-                        }
                     )
                 }
                 Column(
@@ -93,7 +89,6 @@ fun CoinsContainer(
                         textAlign = TextAlign.Left,
                         modifier = Modifier
                             .padding(bottom = dimensionResource(R.dimen.spacing_1))
-                            .semantics { contentDescription = "" }
                     )
                     //Coin type value
                     androidx.compose.material.Text(
@@ -101,15 +96,12 @@ fun CoinsContainer(
                         style = com.example.newsuktech.ui.theme.Typography.MU3PowerUpBodyText,
                         color = NewsUkTechTheme.colors.Titles,
                         textAlign = TextAlign.Left,
-                        modifier = Modifier.semantics {
-                            contentDescription = ""
-                        }
                     )
                 }
                 //Arrow
                 Image(
                     painter = painterResource(id = R.drawable.ic_chevron_right),
-                    contentDescription = ""
+                    contentDescription = EMPTY
                 )
             }
         }

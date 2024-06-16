@@ -17,13 +17,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.dimensionResource
-import androidx.compose.ui.semantics.contentDescription
-import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.example.data.utilities.Constants.Companion.EMPTY
 import com.example.domain.model.CoinDataState
 import com.example.newsuktech.R
 import com.example.newsuktech.ui.theme.NewsUkTechTheme
@@ -65,7 +65,7 @@ fun CoinDetailContainer(
                 ) {
                     GlideImage(
                         model = Uri.parse(coinData.logo),
-                        contentDescription = "",
+                        contentDescription = EMPTY,
                         modifier = Modifier
                             .width(dimensionResource(id = R.dimen.spacing_48))
                             .height(dimensionResource(id = R.dimen.spacing_48))
@@ -93,23 +93,21 @@ fun CoinDetailContainer(
                 ) {
 
                     androidx.compose.material.Text(
-                        text = "Symbol",
+                        text = stringResource(id = R.string.coins_detail_title_symbol),
                         style = Typography.SmallTitle,
                         color = NewsUkTechTheme.colors.Titles,
                         textAlign = TextAlign.Left,
                         modifier = Modifier
                             .padding(top = dimensionResource(id = R.dimen.spacing_4))
-                            .semantics { contentDescription = "" }
                     )
 
                     androidx.compose.material.Text(
-                        text = "Rank",
+                        text = stringResource(id = R.string.coins_detail_title_rank),
                         style = Typography.SmallTitle,
                         color = NewsUkTechTheme.colors.Titles,
                         textAlign = TextAlign.Left,
                         modifier = Modifier
                             .padding(bottom = dimensionResource(R.dimen.spacing_1))
-                            .semantics { contentDescription = "" }
                     )
 
                     androidx.compose.material.Text(
@@ -119,14 +117,12 @@ fun CoinDetailContainer(
                         textAlign = TextAlign.Left,
                         modifier = Modifier
                             .padding(bottom = dimensionResource(R.dimen.spacing_1))
-                            .semantics { contentDescription = "" }
                     )
                 }
 
                 Column(
                     verticalArrangement = Arrangement.Center
                 ) {
-
                     Text(
                         text = coinData.symbol,
                         style = Typography.BodyCopy,
@@ -134,9 +130,6 @@ fun CoinDetailContainer(
                         textAlign = TextAlign.Left,
                         modifier = Modifier
                             .padding(top = dimensionResource(id = R.dimen.spacing_4))
-                            .semantics {
-                                contentDescription = ""
-                            }
                     )
 
                     androidx.compose.material.Text(
@@ -146,21 +139,15 @@ fun CoinDetailContainer(
                         textAlign = TextAlign.Left,
                         modifier = Modifier
                             .padding(top = dimensionResource(id = R.dimen.spacing_10))
-                            .semantics {
-                                contentDescription = ""
-                            }
                     )
 
                     Text(
-                        text = coinData.platform ?: "Unknown",
+                        text = coinData.platform,
                         style = Typography.BodyCopy,
                         color = NewsUkTechTheme.colors.CodingChallenge2024Grey,
                         textAlign = TextAlign.Left,
                         modifier = Modifier
                             .padding(top = dimensionResource(id = R.dimen.spacing_8))
-                            .semantics {
-                                contentDescription = ""
-                            }
                     )
                 }
             }
@@ -168,7 +155,7 @@ fun CoinDetailContainer(
             Text(
                 modifier = Modifier
                     .padding(top = dimensionResource(id = R.dimen.spacing_16)),
-                text = coinData.description ?: "It doesn't have a description",
+                text = coinData.description,
                 color = NewsUkTechTheme.colors.Titles,
                 style = Typography.BodyCopyRegular,
             )
