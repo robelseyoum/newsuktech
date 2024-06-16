@@ -11,7 +11,7 @@
 - Main Jetpack Components including ViewModel
 
 <p align="center">
-  <img src="After coins_list.jpeg" alt="After Fajar" width="270" height="480"/>
+  <img src="List of Coins coins_list.png" alt="List of Coins" width="270" height="480"/>
 
-  <img src="During coin_detail.jpeg" alt="During Dhuhr" width="270" height="480"/>
+  <img src="Coins Details coin_detail.png" alt="Coins Details" width="270" height="480"/>
 </p>
