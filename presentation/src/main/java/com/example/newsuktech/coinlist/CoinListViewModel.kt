@@ -1,5 +1,6 @@
 package com.example.newsuktech.coinlist
 
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
@@ -8,7 +9,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.data.utilities.Constants.Companion.requestIODispatchers
 import com.example.data.utilities.Constants.Companion.requestMainDispatchers
-import com.example.domain.interactors.coinsusecase.GetCoinsUsecase
+import com.example.domain.interactors.coinsusecase.GetCoinsUseCase
 import com.example.domain.model.CoinData
 import com.example.domain.model.CoinDataState
 import com.example.domain.model.LoadingState
@@ -23,7 +24,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CoinListViewModel @Inject constructor(
-    private val getCoinsUsecase: GetCoinsUsecase
+    private val getCoinsUseCase: GetCoinsUseCase
 ) : ViewModel() {
 
     private var loadJob: Job? = null
@@ -41,15 +42,15 @@ class CoinListViewModel @Inject constructor(
         fetchCoins()
     }
 
-    private fun fetchCoins() {
+    fun fetchCoins() {
         updateLoadingState(LoadingState.LOADING)
         loadJob?.cancel()
         loadJob = viewModelScope.launch(requestIODispatchers) {
-            getCoinsUsecase.invoke().catch {
+            getCoinsUseCase.invoke().catch {
                 updateLoadingState(LoadingState.ERROR)
             }.collectLatest { result ->
-                result?.let {
-                    updateCoinsDataState(it)
+                result?.let { coinDataValue ->
+                    updateCoinsDataState(coinDataValue)
                     updateLoadingState(LoadingState.READY)
                 }
             }

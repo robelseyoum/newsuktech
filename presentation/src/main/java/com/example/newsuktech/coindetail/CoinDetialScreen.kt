@@ -33,7 +33,7 @@ fun CoinDetailScreen(
     val coinDataState = viewModel.coinDataState
 
     LaunchedEffect(coinId) {
-        viewModel.innitCoinDetail(coinId)
+        viewModel.fetchCoinDetail(coinId)
     }
     Scaffold(
         modifier = Modifier

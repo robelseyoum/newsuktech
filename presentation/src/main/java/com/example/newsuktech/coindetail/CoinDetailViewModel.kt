@@ -20,7 +20,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CoinDetailViewModel @Inject constructor(
-    private val getCoinDetailUsecase: GetCoinDetailUseCase
+    private val getCoinDetailUseCase: GetCoinDetailUseCase
 ) : ViewModel() {
 
     private var loadJob: Job? = null
@@ -32,15 +32,11 @@ class CoinDetailViewModel @Inject constructor(
         private set
 
 
-    fun innitCoinDetail(id: String) {
-        fetchCoinDetail(id = id)
-    }
-
-    private fun fetchCoinDetail(id: String) {
+    fun fetchCoinDetail(id: String) {
         updateLoadingState(LoadingState.LOADING)
         loadJob?.cancel()
         loadJob = viewModelScope.launch(Constants.requestIODispatchers) {
-            getCoinDetailUsecase.invoke(id).catch {
+            getCoinDetailUseCase.invoke(id).catch {
                 updateLoadingState(LoadingState.ERROR)
             }.collectLatest { result ->
                 result?.let {
