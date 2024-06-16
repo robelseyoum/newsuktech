@@ -6,7 +6,6 @@ import com.example.data.api.ApiResponseHandler
 import com.example.data.api.response.CoinResponse
 import com.example.data.mapper.mapToDomain
 import com.example.domain.model.CoinData
-import com.example.newsuktech.util.MainDispatcherRule
 import io.mockk.clearAllMocks
 import io.mockk.coEvery
 import io.mockk.mockk
@@ -28,9 +27,6 @@ class CoinsListRepositoryImplTest {
 
     @get:Rule
     val rule = InstantTaskExecutorRule()
-
-    @get:Rule
-    val coroutineRule = MainDispatcherRule()
 
     private lateinit var api: Api
     private lateinit var apiResponseHandler: ApiResponseHandler<List<CoinResponse>>

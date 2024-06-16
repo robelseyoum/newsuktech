@@ -4,8 +4,8 @@ import android.app.Application
 import com.example.data.api.Api
 import com.example.data.api.ApiResponseHandler
 import com.example.data.utilities.Constants.Companion.COIN_PAPRIKA_BASE_URL
-import com.example.domain.interactors.coindetailusecase.GetCoinDetailUsecase
-import com.example.domain.interactors.coindetailusecase.GetCoinDetailUsecaseImp
+import com.example.domain.interactors.coindetailusecase.GetCoinDetailUseCase
+import com.example.domain.interactors.coindetailusecase.GetCoinDetailUseCaseImp
 import com.example.domain.interactors.coinsusecase.GetCoinsUseCaseImp
 import com.example.domain.interactors.coinsusecase.GetCoinsUsecase
 import com.example.domain.repository.CoinDetailRepository
@@ -108,7 +108,7 @@ class AppModule {
     @Singleton
     fun provideGetCoinDetailRepository(
         repository: CoinDetailRepository
-    ): GetCoinDetailUsecase {
-        return GetCoinDetailUsecaseImp(repository)
+    ): GetCoinDetailUseCase {
+        return GetCoinDetailUseCaseImp(repository)
     }
 }
