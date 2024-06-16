@@ -19,7 +19,7 @@ class CoinsListRepositoryImpl @Inject constructor(
             .map { remoteCoinsResponse ->
                 remoteCoinsResponse?.map {
                     it.mapToDomain()
-                }
+                }?.sortedBy { it.name }
             }
     }
 }
