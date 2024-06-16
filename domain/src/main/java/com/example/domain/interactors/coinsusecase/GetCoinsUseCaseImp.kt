@@ -12,7 +12,7 @@ import javax.inject.Inject
 @OpenForTesting
 open class GetCoinsUseCaseImp @Inject constructor(
     private val repository: CoinsListRepository
-) : GetCoinsUsecase {
+) : GetCoinsUseCase {
    override suspend operator fun invoke(): Flow<List<CoinData>?> = channelFlow {
         repository.getCoins().collectLatest { data ->
             data?.let {

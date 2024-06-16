@@ -7,7 +7,7 @@ import com.example.data.utilities.Constants.Companion.COIN_PAPRIKA_BASE_URL
 import com.example.domain.interactors.coindetailusecase.GetCoinDetailUseCase
 import com.example.domain.interactors.coindetailusecase.GetCoinDetailUseCaseImp
 import com.example.domain.interactors.coinsusecase.GetCoinsUseCaseImp
-import com.example.domain.interactors.coinsusecase.GetCoinsUsecase
+import com.example.domain.interactors.coinsusecase.GetCoinsUseCase
 import com.example.domain.repository.CoinDetailRepository
 import com.example.domain.repository.CoinsListRepository
 import com.example.newsuktech.App
@@ -98,9 +98,9 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideGetCoinsUsecase(
+    fun provideGetCoinsUseCase(
         repository: CoinsListRepository
-    ): GetCoinsUsecase {
+    ): GetCoinsUseCase {
         return GetCoinsUseCaseImp(repository)
     }
 
