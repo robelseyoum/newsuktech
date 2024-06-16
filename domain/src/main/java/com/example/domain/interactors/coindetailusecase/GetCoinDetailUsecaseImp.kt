@@ -10,9 +10,9 @@ import javax.inject.Inject
 
 
 @OpenForTesting
-open class GetCoinDetailUsecaseImp @Inject constructor(
+open class GetCoinDetailUseCaseImp @Inject constructor(
     private val repository: CoinDetailRepository
-) : GetCoinDetailUsecase {
+) : GetCoinDetailUseCase {
     override suspend operator fun invoke(id: String): Flow<CoinData?> = channelFlow {
         repository.getCoin(id).collectLatest { data ->
             data?.let {

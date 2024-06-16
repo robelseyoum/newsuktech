@@ -3,7 +3,6 @@ package com.example.domain.interactors.coinsusecase
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.domain.model.CoinData
 import com.example.domain.repository.CoinsListRepository
-import com.example.newsuktech.util.MainDispatcherRule
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -24,10 +23,6 @@ class GetCoinsUseCaseImpTest {
 
     @get:Rule
     val rule = InstantTaskExecutorRule()
-
-
-    @get:Rule
-    val coroutineRule = MainDispatcherRule()
 
     private lateinit var repository: CoinsListRepository
     private lateinit var getCoinsUseCase: GetCoinsUseCaseImp

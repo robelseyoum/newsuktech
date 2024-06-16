@@ -6,7 +6,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.data.utilities.Constants
-import com.example.domain.interactors.coindetailusecase.GetCoinDetailUsecase
+import com.example.domain.interactors.coindetailusecase.GetCoinDetailUseCase
 import com.example.domain.model.CoinData
 import com.example.domain.model.CoinDataState
 import com.example.domain.model.LoadingState
@@ -20,7 +20,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CoinDetailViewModel @Inject constructor(
-    private val getCoinDetailUsecase: GetCoinDetailUsecase
+    private val getCoinDetailUsecase: GetCoinDetailUseCase
 ) : ViewModel() {
 
     private var loadJob: Job? = null
