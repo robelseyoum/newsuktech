@@ -11,7 +11,7 @@
 - Main Jetpack Components including ViewModel
 
 <p align="center">
-  <img src="coins_list.png" alt="List of Coins" width="270" height="480"/>
+  <img src="coins_list.png" alt="List of Coins" width="220" height="480"/>
 
-  <img src="coin_detail.png" alt="Coins Details" width="270" height="480"/>
+  <img src="coin_detail.png" alt="Coins Details" width="220" height="480"/>
 </p>
